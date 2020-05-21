@@ -11,4 +11,4 @@ class LoginForm(FlaskForm):
     password = StrippedPasswordField('Пароль', validators=[
         DataRequired(message='Введите пароль')
     ])
-    submit = SubmitField('Войти')
+    submit = SubmitField('Вход')

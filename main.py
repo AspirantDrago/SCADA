@@ -1,10 +1,11 @@
-from flask import Flask, redirect, request, render_template
-from flask_login import login_required, current_user, LoginManager
+from flask import Flask, redirect, request, render_template, session as flask_session
+from flask_login import login_required, current_user, LoginManager, logout_user, login_user
 import os
 import logging
 
 from config import *
 from data.users import User
+from forms.login_form import LoginForm
 
 
 app = Flask(__name__)
@@ -22,15 +23,44 @@ def load_user(user_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    print(session.query(User).all())
     if current_user.is_authenticated:
         return redirect(request.args.get('next', '/'))
-    return render_template('login.html')
+    form = LoginForm()
+    if 'last_logins' not in flask_session:
+        flask_session['last_logins'] = []
+    if form.validate_on_submit():
+        login = form.login.data.strip()
+        password = form.password.data.strip()
+        user = session.query(User).filter(User.login == login).first()
+        if user and user.check_password(password):
+            if login in flask_session['last_logins']:
+                flask_session['last_logins'].remove(login)
+            flask_session['last_logins'].append(login)
+            flask_session['last_logins'] = flask_session['last_logins'][-COUNT_SAVED_LOGINS:]
+            flask_session.modified = True
+            login_user(user, remember=REMEMBER_USER)
+            return redirect(request.args.get('next', '/'))
+        return render_template('login.html',
+                               message="Неправильный логин или пароль",
+                               form=form)
+    login = request.args.get('login', '')
+    form.login.data = login
+    last_logins = flask_session['last_logins'][::-1]
+    return render_template('login.html', form=form, login=login, last_logins=last_logins)
 
 
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     return render_template('index.html')
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/login")
 
 
 if __name__ == '__main__':

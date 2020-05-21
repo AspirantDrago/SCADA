@@ -3,5 +3,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <form action="#" method="post" class="main-form">
+        {{ form.hidden_tag() }}
+        <h1>
+            <span>
+                SCADA
+            </span>
+        </h1>
+        <div class="group">
+            {{ form.login.label }}
+            {{ form.login(class="control") }}
+            {% for error in form.login.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <h6>
+                        {{ error }}
+                    </h6>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="group">
+            {{ form.password.label }}
+            {{ form.password(class="control") }}
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <h6>
+                        {{ error }}
+                    </h6>
+                </div>
+            {% endfor %}
+        </div>
+        {% if message %}
+            <div class="group">
+                <div class="alert alert-danger" role="alert">
+                    <h6>
+                        {{ message }}
+                    </h6>
+                </div>
+            </div>
+        {% endif %}
+        {{ form.submit(type="submit", class="submit control") }}
+        {% if last_logins %}
+            <div class="last-profiles group">
+                <p>
+                    Последние профили:
+                </p>
+                <ul>
+                    {% for last_login in last_logins %}
+                        <li>
+                            <a href="/login?login={{ last_login }}">
+                                {{ last_login }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </form>
 {% endblock %}
