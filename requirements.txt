@@ -1,2 +1,5 @@
-flask
-flask-login
+Flask
+Flask-Login
+SQLAlchemy
+alembic
+flask-wtf
