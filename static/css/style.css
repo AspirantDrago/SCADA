@@ -58,7 +58,8 @@ header h1, .main-form .control, .main-form h1 {
   margin-bottom: 0;
 }
 .last-profiles ul {
-  padding-left: 20px;
+  padding-left: 0;
+  list-style: url("/static/svg/list-item.svg");
 }
 .last-profiles ul a {
   color: #000000;
@@ -66,7 +67,7 @@ header h1, .main-form .control, .main-form h1 {
 }
 
 #background {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;

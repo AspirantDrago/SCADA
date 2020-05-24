@@ -69,7 +69,8 @@ body {
     }
 
     ul {
-        padding-left: 20px;
+        padding-left: 0;
+        list-style: url("/static/svg/list-item.svg");
 
         a {
             color: #000000;
@@ -79,7 +80,7 @@ body {
 }
 
 #background {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
