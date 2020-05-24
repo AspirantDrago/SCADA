@@ -28,7 +28,7 @@ def login():
         return redirect(request.args.get('next', '/'))
     form = LoginForm()
     if 'last_logins' not in flask_session:
-        flask_session['last_logins'] = []
+        flask_session['last_logins'] = TEMPLATE_REMEMBER_USERS
     if form.validate_on_submit():
         login = form.login.data.strip()
         password = form.password.data.strip()

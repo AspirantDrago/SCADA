@@ -10,6 +10,9 @@ DEBAG = True
 SECRET_KEY = 'scada_system'
 REMEMBER_USER = False
 COUNT_SAVED_LOGINS = 4
+# TODO
+TEMPLATE_REMEMBER_USERS = ['кто-то', 'кто-то', 'ещё кто-то']
+# TEMPLATE_REMEMBER_USERS = []
 
 
 def create_root():

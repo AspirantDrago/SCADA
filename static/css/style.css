@@ -1,74 +1,101 @@
 html,
 body {
   height: 100%;
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
 }
 
-body::before {
-  content: '';
+.container {
+  padding: 0 18px;
+}
+
+header h1, .main-form .control, .main-form h1 {
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.main-form.tight {
+  padding: 0 25px;
+}
+.main-form h1 {
+  font-weight: 500;
+}
+.main-form .control {
+  height: 60px;
+  width: 100%;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+.main-form .control.submit {
+  font-weight: 500;
+}
+.main-form .group {
+  margin-top: 26px;
+}
+.main-form .group label {
+  padding-left: 8px;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 0;
+}
+.main-form .alert {
+  border-radius: 15px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.last-profiles {
+  font-size: 18px;
+  line-height: 21px;
+}
+.last-profiles > p {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.last-profiles ul {
+  padding-left: 20px;
+}
+.last-profiles ul a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+#background {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(124, 124, 124, 0.7) 100%);
-  background-position: top left;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(209.36deg, #F3F3F3 0%, rgba(181, 181, 181, 0.7) 100%);
   z-index: -1;
 }
-
-.container {
-    padding-left: 25px;
-    padding-right: 25px;
+#background .footer {
+  background-image: url("/static/svg/footer.svg");
+  width: 100%;
+  height: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#background .bottom-logo {
+  position: absolute;
+  bottom: 17px;
+  width: 100%;
+  text-align: center;
 }
 
-.main-form {
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: normal;
-    color: #000000;
+header h1 {
+  padding-top: 45px;
+  padding-bottom: 5px;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 33px;
 }
 
-.main-form h1 {
-    font-size: 24px;
-    line-height: 28px;
-    text-align: center;
-    padding-top: 45px;
-    padding-bottom: 30px;
-}
-
-.main-form .control {
-    height: 60px;
-    width: 100%;
-    background: #FFFFFF;
-    border: 2px solid #000000;
-    box-sizing: border-box;
-    border-radius: 15px;
-    font-size: 24px;
-    line-height: 28px;
-    text-align: center;
-}
-
-.main-form .control.submit {
-    margin-top: 46px;
-}
-
-.main-form .group {
-    margin-top: 26px;
-}
-
-.main-form .group label {
-    padding-left: 8px;
-    font-size: 18px;
-    line-height: 21px;
-}
-
-.main-form .alert {
-    border-radius: 15px;
-    text-align: center;
-    margin: 10px 0;
-}
-
-.last-profiles a {
-    color: #000000;
-}
+/*# sourceMappingURL=style.css.map */

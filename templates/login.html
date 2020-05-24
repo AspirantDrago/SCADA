@@ -3,11 +3,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="#" method="post" class="main-form">
+    <form action="#" method="post" class="main-form tight">
         {{ form.hidden_tag() }}
         <h1>
             <span>
-                SCADA
+                АВТОРИЗАЦИЯ
             </span>
         </h1>
         <div class="group">
@@ -41,7 +41,9 @@
                 </div>
             </div>
         {% endif %}
-        {{ form.submit(type="submit", class="submit control") }}
+        <div class="group">
+            {{ form.submit(type="submit", class="submit control") }}
+        </div>
         {% if last_logins %}
             <div class="last-profiles group">
                 <p>
