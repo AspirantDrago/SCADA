@@ -9,6 +9,7 @@ from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from forms.edit_password_form import EditPasswordForm
 from forms.edit_login_form import EditLoginForm
+from functions import *
 
 
 app = Flask(__name__)
