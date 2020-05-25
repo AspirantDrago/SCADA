@@ -5,9 +5,6 @@ import logging
 
 from config import *
 from data.users import User
-from data.temperature import Temperature
-from data.pressure import Pressure
-from data.consumption import Consumption
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from forms.edit_password_form import EditPasswordForm
@@ -163,6 +160,12 @@ def edit_login():
         session.commit()
         return redirect('/settings?login_success=Логин успешно изменён')
     return render_template('edit_login.html', form=form)
+
+
+@app.route('/stand', methods=['GET'])
+@login_required
+def stand():
+    return render_template('stand.html')
 
 
 @app.route('/logout')

@@ -151,6 +151,7 @@ header .navbar .navbar-toggler .navbar-menu {
 #ModalMenu .modal-dialog .modal-content h1 {
   font-weight: 500;
   margin: 17px 0 0 0;
+  color: #000000;
 }
 #ModalMenu .modal-dialog .modal-content h6 {
   font-style: italic;
