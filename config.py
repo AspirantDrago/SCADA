@@ -1,5 +1,8 @@
 from data import db_session
 from data.users import User
+from data.temperature import Temperature
+from data.pressure import Pressure
+from data.consumption import Consumption
 
 
 db_session.global_init("db/database.sqlite")
@@ -27,4 +30,83 @@ def create_root():
         session.commit()
 
 
+def add_default_record(table, params):
+    title = params['title']
+    record = session.query(table).filter(table.title == title).first()
+    if record:
+        return False
+    new_record = table(**params)
+    session.add(new_record)
+    session.commit()
+    return True
+
+
+def create_values():
+    add_default_record(Temperature, {
+        'title': 'градус Цельсия',
+        'desc': '°С'
+    })
+    add_default_record(Temperature, {
+        'title': 'градус Фаренгейта',
+        'desc': '°F',
+        'coefficient': 9 / 5,
+        'shift': 32
+    })
+    add_default_record(Temperature, {
+        'title': 'градус Кельвина',
+        'desc': 'K',
+        'shift': -273.15
+    })
+
+    add_default_record(Pressure, {
+        'title': 'Паскаль',
+        'desc': 'Па',
+    })
+    add_default_record(Pressure, {
+        'title': 'кгс/см²',
+        'desc': 'кгс/см²',
+        'coefficient': 1.01972 * 10 ** (-5)
+    })
+    add_default_record(Pressure, {
+        'title': 'бар',
+        'desc': 'бар',
+        'coefficient': 1 * 10 ** (-5)
+    })
+    add_default_record(Pressure, {
+        'title': 'атм',
+        'desc': 'атм',
+        'coefficient': 0.98692 * 10 ** (-5)
+    })
+    add_default_record(Pressure, {
+        'title': 'мм рт.ст.',
+        'desc': 'мм рт.ст.',
+        'coefficient': 750.06 * 10 ** (-5)
+    })
+    add_default_record(Pressure, {
+        'title': 'мм вод.ст.',
+        'desc': 'мм вод.ст.',
+        'coefficient': 0.101972
+    })
+    add_default_record(Pressure, {
+        'title': 'пси',
+        'desc': 'пси',
+        'coefficient': 1.45 * 10 ** (-4)
+    })
+
+    add_default_record(Consumption, {
+        'title': 'м³/ч',
+        'desc': 'м³/ч',
+        'coefficient': 1 / 3600
+    })
+    add_default_record(Consumption, {
+        'title': 'м³/c',
+        'desc': 'м³/c',
+    })
+
+
 create_root()
+create_values()
+
+TEMPERATURES = session.query(Temperature).all()
+PRESSURES = session.query(Pressure).all()
+CONSUMPTIONS = session.query(Consumption).all()

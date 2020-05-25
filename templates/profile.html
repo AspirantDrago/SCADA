@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="main-form profile-grid">
+    <form class="main-form profile-grid" method="post" action="#">
         <h1>
             <span>
                 ПРОФИЛЬ
@@ -27,21 +27,68 @@
         </div>
         <div class="row">
             <div class="col-6">
-                Регистрация:
+                Регистр.:
             </div>
             <div class="col-6">
                 {{ current_user.created_date_format }}
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-6">
-
-            </div>
-            <div class="col-6">
-
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-12">
+                Единицы измерения:
             </div>
         </div>
-    </div>
+        <div class="row selection">
+            <div class="col-6">
+                Температура
+            </div>
+            <div class="col-6">
+                <select name="temperature" size="1" class="form-control" onchange="updateProfile();">
+                    {% for item in TEMPERATURES %}
+                        {% if current_user.temperature == item %}
+                            <option value="{{ item.id }}" selected="selected">{{ item.desc }}</option>
+                        {% else %}
+                            <option value="{{ item.id }}">{{ item.desc }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row selection">
+            <div class="col-6">
+                Давление
+            </div>
+            <div class="col-6">
+                <select name="pressure" size="1" class="form-control" onchange="updateProfile();">
+                    {% for item in PRESSURES %}
+                        {% if current_user.pressure == item %}
+                            <option value="{{ item.id }}" selected="selected">{{ item.desc }}</option>
+                        {% else %}
+                            <option value="{{ item.id }}">{{ item.desc }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row selection">
+            <div class="col-6">
+                Расход
+            </div>
+            <div class="col-6">
+                <select name="consumption" size="1" class="form-control" onchange="updateProfile();">
+                    {% for item in CONSUMPTIONS %}
+                        {% if current_user.consumption == item %}
+                            <option value="{{ item.id }}" selected="selected">{{ item.desc }}</option>
+                        {% else %}
+                            <option value="{{ item.id }}">{{ item.desc }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <input type="submit" class="d-none" id="profile-submit">
+    </form>
 {% endblock %}

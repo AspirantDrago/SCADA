@@ -11,7 +11,7 @@ body {
   padding: 0 18px;
 }
 
-.profile-grid, .main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
+.profile-grid select, .profile-grid, .main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
   font-size: 24px;
   line-height: 28px;
 }
@@ -177,6 +177,30 @@ footer {
 }
 .profile-grid .row {
   margin-top: 13px;
+  position: relative;
+}
+.profile-grid .row.selection {
+  margin-top: 18px;
+}
+.profile-grid .row.selection::before {
+  content: "";
+  background-image: url(/static/svg/triangle.svg);
+  width: 24px;
+  height: 20px;
+  position: absolute;
+  left: -12px;
+  top: 5px;
+}
+.profile-grid select {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+  color: #000000;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  position: relative;
+  top: -0.25em;
 }
 
 /*# sourceMappingURL=style.css.map */

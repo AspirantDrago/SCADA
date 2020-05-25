@@ -5,6 +5,9 @@ import logging
 
 from config import *
 from data.users import User
+from data.temperature import Temperature
+from data.pressure import Pressure
+from data.consumption import Consumption
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from forms.edit_password_form import EditPasswordForm
@@ -83,8 +86,32 @@ def index():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
+    if request.method == 'POST':
+        try:
+            temperature_id = int(request.form.get('temperature', '1'))
+            current_user.temperature_id = temperature_id
+            session.commit()
+        except BaseException as e:
+            pass
+        try:
+            pressure_id = int(request.form.get('pressure', '1'))
+            current_user.pressure_id = pressure_id
+            session.commit()
+        except BaseException as e:
+            pass
+        try:
+            consumption_id = int(request.form.get('consumption', '1'))
+            current_user.consumption_id = consumption_id
+            session.commit()
+        except BaseException as e:
+            pass
     ip_address = request.remote_addr
-    return render_template('profile.html', ip_address=ip_address)
+    return render_template('profile.html',
+                           ip_address=ip_address,
+                           TEMPERATURES=TEMPERATURES,
+                           PRESSURES=PRESSURES,
+                           CONSUMPTIONS=CONSUMPTIONS
+                           )
 
 
 @app.route('/settings', methods=['GET', 'POST'])

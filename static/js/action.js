@@ -18,3 +18,7 @@ $('body').on('click', '.control-eye', function(){
     }
 	return false;
 });
+
+function updateProfile() {
+    $('#profile-submit').click();
+}
