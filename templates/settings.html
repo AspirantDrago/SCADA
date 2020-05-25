@@ -1,0 +1,60 @@
+{% set page='settings' %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main-form">
+        <h1>
+            <span>
+                НАСТРОЙКИ
+            </span>
+        </h1>
+        <form action="/edit_password" method="get">
+            <div class="group">
+                <input class="submit control" type="submit" value="Сменить пароль">
+            </div>
+        </form>
+        {% if password_alert %}
+            <div class="group">
+                <div class="alert alert-danger" role="alert">
+                    <h6>
+                        {{ password_alert }}
+                    </h6>
+                </div>
+            </div>
+        {% endif %}
+        {% if password_success %}
+            <div class="group">
+                <div class="alert alert-success" role="alert">
+                    <h6>
+                        {{ password_success }}
+                    </h6>
+                </div>
+            </div>
+        {% endif %}
+        <br><br>
+        <form action="/edit_login" method="get">
+            <div class="group">
+                <input class="submit control" type="submit" value="Сменить логин">
+            </div>
+        </form>
+        {% if login_alert %}
+            <div class="group">
+                <div class="alert alert-danger" role="alert">
+                    <h6>
+                        {{ login_alert }}
+                    </h6>
+                </div>
+            </div>
+        {% endif %}
+        {% if login_success %}
+            <div class="group">
+                <div class="alert alert-success" role="alert">
+                    <h6>
+                        {{ login_success }}
+                    </h6>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

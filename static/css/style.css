@@ -11,17 +11,18 @@ body {
   padding: 0 18px;
 }
 
-.main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, .main-form h1 {
+.main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
   font-size: 24px;
   line-height: 28px;
   text-align: center;
 }
 
+h1 {
+  font-weight: 500;
+}
+
 .main-form.tight {
   padding: 0 25px;
-}
-.main-form h1 {
-  font-weight: 500;
 }
 .main-form .control {
   height: 60px;

@@ -78,12 +78,12 @@
                     {% endif %}
                 {% endif %}
                 {% for url, name, page_name in [
-                    ('/', 'Профиль', ''),
+                    ('/profile', 'Профиль', 'profile'),
                     ('/', 'Штаб', ''),
                     ('/', 'Графики', ''),
                     ('/', 'Лаборатория', ''),
                     ('/', 'Заметки', ''),
-                    ('/', 'Настройки', ''),
+                    ('/settings', 'Настройки', 'settings'),
                 ] %}
                     {% if page != page_name %}
                         {% if current_user.is_authenticated %}

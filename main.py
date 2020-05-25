@@ -7,6 +7,8 @@ from config import *
 from data.users import User
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
+from forms.edit_password_form import EditPasswordForm
+from forms.edit_login_form import EditLoginForm
 
 
 app = Flask(__name__)
@@ -76,6 +78,63 @@ def register():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
+
+
+@app.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    return render_template('profile.html')
+
+
+@app.route('/settings', methods=['GET', 'POST'])
+@login_required
+def settings():
+    return render_template('settings.html',
+                           password_alert=request.args.get('password_alert'),
+                           password_success=request.args.get('password_success'),
+                           login_alert=request.args.get('login_alert'),
+                           login_success=request.args.get('login_success'),
+                           )
+
+
+@app.route('/edit_password', methods=['GET', 'POST'])
+@login_required
+def edit_password():
+    form = EditPasswordForm()
+    if form.validate_on_submit():
+        user = session.query(User).get(current_user.id)
+        last_password = form.last_password.data.strip()
+        if not user.check_password(last_password):
+            return render_template('edit_password.html', form=form,
+                                   message='Введён неправильный старый пароль')
+        password = form.password.data.strip()
+        if last_password == password:
+            return render_template('edit_password.html', form=form,
+                                   message='Старый и новый пароли совпадают')
+        user.set_password(password)
+        session.commit()
+        return redirect('/settings?password_success=Пароль успешно изменён')
+    return render_template('edit_password.html', form=form)
+
+
+@app.route('/edit_login', methods=['GET', 'POST'])
+@login_required
+def edit_login():
+    form = EditLoginForm()
+    if form.validate_on_submit():
+        user = session.query(User).get(current_user.id)
+        login = form.new_login.data.strip()
+        other_user = session.query(User).filter(User.login == login).first()
+        if user == other_user:
+            return render_template('edit_login.html', form=form,
+                                   message='Старый и новый логины совпадают')
+        if other_user:
+            return render_template('edit_login.html', form=form,
+                                   message='Этот логин уже занят')
+        user.login = login
+        session.commit()
+        return redirect('/settings?login_success=Логин успешно изменён')
+    return render_template('edit_login.html', form=form)
 
 
 @app.route('/logout')

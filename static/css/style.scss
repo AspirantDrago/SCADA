@@ -17,16 +17,16 @@ body {
     text-align: center;
 }
 
+h1 {
+        font-weight: 500;
+        @extend %center-control;
+    }
+
 .main-form {
     $control-height: 60px;
 
     &.tight {
         padding: 0 25px;
-    }
-
-    h1 {
-        font-weight: 500;
-        @extend %center-control;
     }
 
     .control {
