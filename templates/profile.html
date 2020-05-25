@@ -3,12 +3,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="main-form">
+    <div class="main-form profile-grid">
         <h1>
             <span>
                 ПРОФИЛЬ
             </span>
         </h1>
+        <div class="row">
+            <div class="col-6">
+                Логин:
+            </div>
+            <div class="col-6">
+                {{ current_user.login }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                IP-адрес:
+            </div>
+            <div class="col-6">
+                {{ ip_address }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Регистрация:
+            </div>
+            <div class="col-6">
+                {{ current_user.created_date_format }}
+            </div>
+        </div>
 
+
+        <div class="row">
+            <div class="col-6">
+
+            </div>
+            <div class="col-6">
+
+            </div>
+        </div>
     </div>
 {% endblock %}

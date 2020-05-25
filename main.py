@@ -83,7 +83,8 @@ def index():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
-    return render_template('profile.html')
+    ip_address = request.remote_addr
+    return render_template('profile.html', ip_address=ip_address)
 
 
 @app.route('/settings', methods=['GET', 'POST'])

@@ -20,3 +20,7 @@ class User(SqlAlchemyBase, UserMixin):
 
     def __repr__(self):
         return f'<User {self.id} "{self.login}">'
+
+    @property
+    def created_date_format(self):
+        return self.created_date.strftime("%d.%m.%Y")

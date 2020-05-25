@@ -11,16 +11,20 @@ body {
     padding: 0 18px;
 }
 
-%center-control {
+%basic-control {
     font-size: 24px;
     line-height: 28px;
+}
+
+%center-control {
+    @extend %basic-control;
     text-align: center;
 }
 
 h1 {
-        font-weight: 500;
-        @extend %center-control;
-    }
+    font-weight: 500;
+    @extend %center-control;
+}
 
 .main-form {
     $control-height: 60px;
@@ -165,8 +169,6 @@ header {
     .modal-dialog {
         margin: 83px 18px 40px;
         max-width: none;
-        margin: 83px 18px 40px 18px;
-        max-width: none;
         max-height: calc(100% - 83px - 40px);
 
         .modal-content {
@@ -205,4 +207,13 @@ header {
 
 footer {
     height: 30px;
+}
+
+.profile-grid {
+    @extend %basic-control;
+    padding: 0 24px;
+
+    .row {
+        margin-top: 13px;
+    }
 }

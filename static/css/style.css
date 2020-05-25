@@ -11,9 +11,12 @@ body {
   padding: 0 18px;
 }
 
-.main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
+.profile-grid, .main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
   font-size: 24px;
   line-height: 28px;
+}
+
+.main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
   text-align: center;
 }
 
@@ -137,8 +140,6 @@ header .navbar .navbar-toggler .navbar-menu {
 #ModalMenu .modal-dialog {
   margin: 83px 18px 40px;
   max-width: none;
-  margin: 83px 18px 40px 18px;
-  max-width: none;
   max-height: calc(100% - 83px - 40px);
 }
 #ModalMenu .modal-dialog .modal-content {
@@ -169,6 +170,13 @@ header .navbar .navbar-toggler .navbar-menu {
 
 footer {
   height: 30px;
+}
+
+.profile-grid {
+  padding: 0 24px;
+}
+.profile-grid .row {
+  margin-top: 13px;
 }
 
 /*# sourceMappingURL=style.css.map */
