@@ -13,6 +13,7 @@ COUNT_SAVED_LOGINS = 4
 # TODO
 TEMPLATE_REMEMBER_USERS = ['кто-то', 'кто-то', 'ещё кто-то']
 # TEMPLATE_REMEMBER_USERS = []
+MIN_PASSWORD_LENGTH = 6
 
 
 def create_root():

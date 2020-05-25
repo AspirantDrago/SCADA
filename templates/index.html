@@ -3,5 +3,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="main-italic">
+    <p>
+        Добро Пожаловать!
+    </p>
+    {% if not current_user.is_authenticated %}
+        <br><br>
+        <p>
+            Для удобной работы создайте аккаунт в нашем приложении
+        </p>
+    {% endif %}
+</div>
 {% endblock %}

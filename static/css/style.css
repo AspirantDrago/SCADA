@@ -11,7 +11,7 @@ body {
   padding: 0 18px;
 }
 
-#ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, .main-form h1 {
+.main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, .main-form h1 {
   font-size: 24px;
   line-height: 28px;
   text-align: center;
@@ -156,6 +156,18 @@ header .navbar .navbar-toggler .navbar-menu {
   line-height: 16px;
   text-align: center;
   color: #575757;
+}
+
+.main-italic {
+  font-style: italic;
+}
+
+.alert h1, .alert h2, .alert h3, .alert h4, .alert h5, .alert h6 {
+  margin-bottom: 0;
+}
+
+footer {
+  height: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */

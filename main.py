@@ -6,6 +6,7 @@ import logging
 from config import *
 from data.users import User
 from forms.login_form import LoginForm
+from forms.register_form import RegisterForm
 
 
 app = Flask(__name__)
@@ -50,8 +51,29 @@ def login():
     return render_template('login.html', form=form, login=login, last_logins=last_logins)
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect("/")
+    form = RegisterForm()
+    if form.validate_on_submit():
+        login = form.login.data.strip()
+        password = form.password.data.strip()
+        user = session.query(User).filter(User.login == login).first()
+        if user:
+            return render_template('register.html',
+                                   message="Пользователь с таким логином уже зарегистрирован",
+                                   form=form)
+        new_user = User(login=login)
+        new_user.set_password(password)
+        session.add(new_user)
+        session.commit()
+        login_user(new_user, remember=REMEMBER_USER)
+        return redirect('/')
+    return render_template('register.html', form=form)
+
+
 @app.route('/', methods=['GET', 'POST'])
-@login_required
 def index():
     return render_template('index.html')
 
