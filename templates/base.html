@@ -11,15 +11,19 @@
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <script src="/static/js/jquery-3.5.1.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/action.js"></script>
     <link rel="icon" href="/static/svg/logo.svg">
 </head>
 <body>
 <header>
+    <nav class="navbar navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#ModalMenu">
+            <span class="navbar-menu"></span>
+        </button>
+    </nav>
     <h1>
-        <span>
+        <a href="/">
             SCADA
-        </span>
+        </a>
     </h1>
 </header>
 <div class="container">
@@ -33,5 +37,81 @@
         <img src="/static/svg/logo.svg" alt="logo">
     </div>
 </div>
+
+
+<div class="modal fade" id="ModalMenu" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                {% if page != 'index' %}
+                    <a href="/">
+                        <h1>
+                            ГЛАВНАЯ
+                        </h1>
+                        {% if not current_user.is_authenticated %}
+                            <h6>
+                                добро пожаловать
+                            </h6>
+                        {% endif %}
+                    </a>
+                {% endif %}
+                {% if not current_user.is_authenticated %}
+                    {% if page != 'register' %}
+                        <a href="/register">
+                            <h1>
+                                РЕГИСТРАЦИЯ
+                            </h1>
+                            <h6>
+                                если у Вас ещё нет аккаунта
+                            </h6>
+                        </a>
+                    {% endif %}
+                    {% if page != 'login' %}
+                        <a href="/login">
+                            <h1>
+                                АВТОРИЗАЦИЯ
+                            </h1>
+                            <h6>
+                                если у Вас уже есть аккаунт
+                            </h6>
+                        </a>
+                    {% endif %}
+                {% endif %}
+                {% for url, name, page_name in [
+                    ('/', 'Профиль', ''),
+                    ('/', 'Штаб', ''),
+                    ('/', 'Графики', ''),
+                    ('/', 'Лаборатория', ''),
+                    ('/', 'Заметки', ''),
+                    ('/', 'Настройки', ''),
+                ] %}
+                    {% if page != page_name %}
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url }}">
+                        {% endif %}
+                            <h1>
+                                {{ name|upper }}
+                            </h1>
+                        {% if current_user.is_authenticated %}
+                        </a>
+                        {% else %}
+                            <h6>
+                                доступ только после авторизации
+                            </h6>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if current_user.is_authenticated %}
+                    <a href="/logout">
+                        <h1>
+                            Выйти
+                        </h1>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/action.js"></script>
 </body>
 </html>

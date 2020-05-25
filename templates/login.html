@@ -23,7 +23,10 @@
         </div>
         <div class="group">
             {{ form.password.label }}
-            {{ form.password(class="control") }}
+            <div>
+                {{ form.password(class="control") }}
+                <div class="control-eye view"></div>
+            </div>
             {% for error in form.password.errors %}
                 <div class="alert alert-danger" role="alert">
                     <h6>

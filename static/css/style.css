@@ -11,7 +11,7 @@ body {
   padding: 0 18px;
 }
 
-header h1, .main-form .control, .main-form h1 {
+#ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, .main-form h1 {
   font-size: 24px;
   line-height: 28px;
   text-align: center;
@@ -36,6 +36,20 @@ header h1, .main-form .control, .main-form h1 {
 }
 .main-form .group {
   margin-top: 26px;
+}
+.main-form .group div {
+  position: relative;
+}
+.main-form .group div .control-eye {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: -38px;
+  top: 15px;
+  background-image: url("/static/svg/eye.svg");
+}
+.main-form .group div .control-eye.view {
+  background-image: url("/static/svg/eye-view.svg");
 }
 .main-form .group label {
   padding-left: 8px;
@@ -90,13 +104,58 @@ header h1, .main-form .control, .main-form h1 {
   text-align: center;
 }
 
-header h1 {
+header {
   padding-top: 45px;
   padding-bottom: 5px;
+}
+header h1 {
   font-style: italic;
   font-weight: 900;
   font-size: 28px;
   line-height: 33px;
+}
+header h1 a {
+  color: #000000;
+}
+header .navbar {
+  position: absolute;
+}
+header .navbar .navbar-toggler {
+  display: flex;
+  border: none;
+  padding: 0;
+  position: relative;
+  top: -13px;
+}
+header .navbar .navbar-toggler .navbar-menu {
+  background-image: url("/static/svg/menu.svg");
+  width: 40px;
+  height: 40px;
+}
+
+#ModalMenu .modal-dialog {
+  margin: 83px 18px 40px;
+  max-width: none;
+  margin: 83px 18px 40px 18px;
+  max-width: none;
+  max-height: calc(100% - 83px - 40px);
+}
+#ModalMenu .modal-dialog .modal-content {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+#ModalMenu .modal-dialog .modal-content h1 {
+  font-weight: 500;
+  margin: 17px 0 0 0;
+}
+#ModalMenu .modal-dialog .modal-content h6 {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #575757;
 }
 
 /*# sourceMappingURL=style.css.map */

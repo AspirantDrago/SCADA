@@ -18,6 +18,8 @@ body {
 }
 
 .main-form {
+    $control-height: 60px;
+
     &.tight {
         padding: 0 25px;
     }
@@ -28,7 +30,7 @@ body {
     }
 
     .control {
-        height: 60px;
+        height: $control-height;
         width: 100%;
         background: #FFFFFF;
         border: 2px solid #000000;
@@ -43,6 +45,25 @@ body {
 
     .group {
         margin-top: 26px;
+
+        div {
+            position: relative;
+
+            .control-eye {
+                $size: 30px;
+
+                position: absolute;
+                width: $size;
+                height: $size;
+                right: -8px - $size;
+                top: $control-height / 2 - $size / 2;
+                background-image: url("/static/svg/eye.svg");
+
+                &.view {
+                    background-image: url("/static/svg/eye-view.svg");
+                }
+            }
+        }
 
         label {
             padding-left: 8px;
@@ -106,13 +127,67 @@ body {
 }
 
 header {
+    padding-top: 45px;
+    padding-bottom: 5px;
+
     h1 {
         @extend %center-control;
-        padding-top: 45px;
-        padding-bottom: 5px;
         font-style: italic;
         font-weight: 900;
         font-size: 28px;
         line-height: 33px;
+
+        a {
+            color: #000000;
+        }
+    }
+
+    .navbar {
+        position: absolute;
+
+        .navbar-toggler {
+            display: flex;
+            border: none;
+            padding: 0;
+            position: relative;
+            top: -13px;
+
+            .navbar-menu {
+                background-image: url("/static/svg/menu.svg");
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+#ModalMenu {
+    .modal-dialog {
+        margin: 83px 18px 40px;
+        max-width: none;
+        margin: 83px 18px 40px 18px;
+        max-width: none;
+        max-height: calc(100% - 83px - 40px);
+
+        .modal-content {
+            background: #FFFFFF;
+            border: 2px solid #000000;
+            box-sizing: border-box;
+            border-radius: 15px;
+
+            h1 {
+                @extend %center-control;
+                font-weight: 500;
+                margin: 17px 0 0 0;
+            }
+
+            h6 {
+                font-style: italic;
+                font-size: 14px;
+                line-height: 16px;
+                text-align: center;
+                color: #575757;
+            }
+        }
     }
 }
