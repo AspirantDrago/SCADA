@@ -1,0 +1,40 @@
+{% set page='headquarters' %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main-form tight h-100">
+        <h1>
+            <span>
+                ШТАБ
+            </span>
+        </h1>
+        <div class="note-block">
+            <img src="/static/svg/stand.svg" alt="стенд" width="100%">
+        </div>
+        <div class="note-block">
+            <h2 style="text-align: center; color: #cccccc;">
+                График
+            </h2>
+        </div>
+        <div class="note-block">
+            <div class="minify">
+                {% for note in records %}
+                    <div class="note-item minify" id="note-id-{{ note.id }}">
+                        <div class="note-item-text minify">
+                            <a href="/notes/{{ note.id }}">
+                                <pre>{{ note.data_format(rows=1) }}</pre>
+                            </a>
+                            <div class="note-datetime clear">
+                                {{ note.created_date_format }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if records %}
+                    <p class="note-none">Заметок пока нет</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

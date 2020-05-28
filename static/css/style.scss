@@ -267,6 +267,7 @@ footer {
     box-sizing: border-box;
     border-radius: 15px;
     position: relative;
+    margin-bottom: 8px;
 
     .note-one-datetime {
         position: absolute;
@@ -304,6 +305,12 @@ footer {
         position: relative;
         height: 100%;
         scrollbar-color: #E5E5E5 #ffffff;
+        border-radius: 15px;
+
+        &.minify {
+            overflow: hidden;
+            margin-right: 0;
+        }
 
         &::-webkit-scrollbar {
             width: 20px;
@@ -328,19 +335,41 @@ footer {
             margin: 3px 5px;
         }
 
+        .note-none {
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
         .note-item {
             padding-right: 7px;
+
+            &.minify {
+                padding-right: 0;
+            }
 
             .note-datetime {
                 font-size: 12px;
                 line-height: 15px;
                 text-align: right;
+
+                &.clear {
+                    position: absolute;
+                    bottom: 0;
+                    right: 5px;
+                    padding: 5px;
+                    background-color: #ffffff;
+                }
             }
 
             .note-item-text {
                 border-bottom: 1px solid #000000;
                 padding: 15px 10px 0 32px;
                 position: relative;
+
+                &.minify {
+                    padding: 5px 12px;
+                }
 
                 a pre {
                     font-style: normal;

@@ -233,6 +233,26 @@ def notes_remove(id):
     return jsonify({'success': 'ok'})
 
 
+@app.route('/headquarters', methods=['GET'])
+@login_required
+def headquarters():
+    page = 1
+    records = session.query(Note) \
+        .filter(Note.user == current_user) \
+        .order_by(Note.created_date.desc()) \
+        .offset(NOTES_HEAD_PAGE_SIZE * (page - 1)) \
+        .limit(NOTES_HEAD_PAGE_SIZE)
+    return render_template('headquarters.html',
+                           records=records
+    )
+
+
+@app.route('/graphs', methods=['GET'])
+@login_required
+def graphs():
+    return render_template('graphs.html')
+
+
 @app.route('/logout')
 @login_required
 def logout():

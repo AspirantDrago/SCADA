@@ -220,6 +220,7 @@ footer {
   box-sizing: border-box;
   border-radius: 15px;
   position: relative;
+  margin-bottom: 8px;
 }
 .note-block .note-one-datetime {
   position: absolute;
@@ -253,6 +254,11 @@ footer {
   position: relative;
   height: 100%;
   scrollbar-color: #E5E5E5 #ffffff;
+  border-radius: 15px;
+}
+.note-block > div.minify, .note-block > textarea.minify {
+  overflow: hidden;
+  margin-right: 0;
 }
 .note-block > div::-webkit-scrollbar, .note-block > textarea::-webkit-scrollbar {
   width: 20px;
@@ -273,18 +279,36 @@ footer {
   border-radius: 15px;
   margin: 3px 5px;
 }
+.note-block > div .note-none, .note-block > textarea .note-none {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .note-block > div .note-item, .note-block > textarea .note-item {
   padding-right: 7px;
+}
+.note-block > div .note-item.minify, .note-block > textarea .note-item.minify {
+  padding-right: 0;
 }
 .note-block > div .note-item .note-datetime, .note-block > textarea .note-item .note-datetime {
   font-size: 12px;
   line-height: 15px;
   text-align: right;
 }
+.note-block > div .note-item .note-datetime.clear, .note-block > textarea .note-item .note-datetime.clear {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  padding: 5px;
+  background-color: #ffffff;
+}
 .note-block > div .note-item .note-item-text, .note-block > textarea .note-item .note-item-text {
   border-bottom: 1px solid #000000;
   padding: 15px 10px 0 32px;
   position: relative;
+}
+.note-block > div .note-item .note-item-text.minify, .note-block > textarea .note-item .note-item-text.minify {
+  padding: 5px 12px;
 }
 .note-block > div .note-item .note-item-text a pre, .note-block > textarea .note-item .note-item-text a pre {
   font-style: normal;
