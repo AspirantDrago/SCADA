@@ -1,3 +1,6 @@
+$header-height: 90px;
+$footer-height: 30px;
+
 html,
 body {
     height: 100%;
@@ -9,6 +12,7 @@ body {
 
 .container {
     padding: 0 18px;
+    height: calc(100% - 90px - 90px);
 }
 
 %basic-control {
@@ -131,8 +135,9 @@ h1 {
 }
 
 header {
-    padding-top: 45px;
+    padding-top: $header-height / 2;
     padding-bottom: 5px;
+    height: $header-height;
 
     h1 {
         @extend %center-control;
@@ -207,7 +212,7 @@ header {
 }
 
 footer {
-    height: 30px;
+    height: $footer-height;
 }
 
 .profile-grid {
@@ -244,5 +249,89 @@ footer {
         padding-top: 2px;
         position: relative;
         top: -0.25em;
+    }
+}
+
+.note-block {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+
+    &.note-all {
+        height: calc(100% - 45px);
+    }
+
+    & > div {
+        margin-right: -26px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        position: relative;
+        height: 100%;
+        scrollbar-color: #E5E5E5 #ffffff;
+
+        &::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        &::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        &::-webkit-scrollbar-track-piece {
+            background: #FFFFFF;
+            border: 2px solid #000000;
+            box-sizing: border-box;
+            border-radius: 15px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #E5E5E5;
+            border: 2px solid #000000;
+            box-sizing: border-box;
+            border-radius: 15px;
+            margin: 3px 5px;
+        }
+
+        .note-item {
+            padding-right: 7px;
+
+            .note-datetime {
+                font-size: 12px;
+                line-height: 14px;
+                text-align: right;
+            }
+
+            .note-item-text {
+                border-bottom: 1px solid #000000;
+                padding: 15px 10px 0 32px;
+                position: relative;
+
+                a {
+                    pre {
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 16px;
+                        color: #000000;
+                        margin-bottom: 0;
+                    }
+                }
+
+                .remove_button {
+                    position: absolute;
+                    bottom: 50%;
+                    left: 4px;
+                    width: 24px;
+                    height: 24px;
+
+                    a {
+                        position: relative;
+                        top: 50%;
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }

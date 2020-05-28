@@ -5,6 +5,7 @@ import logging
 
 from config import *
 from data.users import User
+from data.notes import Note
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from forms.edit_password_form import EditPasswordForm
@@ -166,7 +167,17 @@ def edit_login():
 @app.route('/stand', methods=['GET'])
 @login_required
 def stand():
-    return render_template('stand.html')
+    return render_template('stand.html',
+                           stand_url=get_stand_url())
+
+
+@app.route('/notes', methods=['GET'])
+@login_required
+def notes():
+    page = 1
+    records = session.query(Note).filter(Note.user == current_user).\
+        offset(NOTES_PAGE_SIZE * (page - 1)).limit(NOTES_PAGE_SIZE).all()
+    return render_template('notes.html', records=records)
 
 
 @app.route('/logout')
@@ -174,6 +185,10 @@ def stand():
 def logout():
     logout_user()
     return redirect("/login")
+
+
+def get_stand_url():
+    return '/static/svg/stand.svg'
 
 
 if __name__ == '__main__':

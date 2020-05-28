@@ -11,3 +11,14 @@ class Note(SqlAlchemyBase):
     user = orm.relation('User', backref='notes')
     data = sqlalchemy.Column(sqlalchemy.Text, nullable=False, default='')
     created_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+
+    def __repr__(self):
+        return f'<Note {self.id} {self.user} "{self.data[:10]}" {self.created_date_format}>'
+
+    @property
+    def created_date_format(self):
+        return self.created_date.strftime("%d.%m.%Y %H:%M")
+
+    def data_format(self, rows=None, max_length=None):
+        return self.data
+

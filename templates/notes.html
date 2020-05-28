@@ -1,0 +1,34 @@
+{% set page='notes' %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main-form tight h-100">
+        <h1>
+            <span>
+                ЗАМЕТКИ
+            </span>
+        </h1>
+        <div class="note-block note-all">
+            <div>
+                {% for note in records %}
+                    <div class="note-item">
+                        <div class="note-item-text">
+                            <a href="/notes/{{ note.id }}">
+                                <pre>{{ note.data[:300] }}</pre>
+                            </a>
+                            <div class="note-datetime">
+                                {{ note.created_date_format }}
+                            </div>
+                            <div class="remove_button">
+                                <a href="/notes/remove/{{ note.id }}">
+                                    <img src="/static/svg/remove.svg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
