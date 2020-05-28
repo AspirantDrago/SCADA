@@ -28,7 +28,6 @@ def load_user(user_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    print(session.query(User).all())
     if current_user.is_authenticated:
         return redirect(request.args.get('next', '/'))
     form = LoginForm()

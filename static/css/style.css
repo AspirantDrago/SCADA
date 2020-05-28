@@ -25,6 +25,9 @@ h1 {
   font-weight: 500;
 }
 
+.main-form {
+  position: relative;
+}
 .main-form.tight {
   padding: 0 25px;
 }
@@ -330,6 +333,19 @@ footer {
   position: relative;
   top: 50%;
   display: block;
+}
+
+#note-add {
+  width: 40px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+  position: absolute;
+  padding: 3px;
+  top: -8px;
+  right: -9px;
 }
 
 /*# sourceMappingURL=style.css.map */

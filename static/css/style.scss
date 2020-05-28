@@ -32,6 +32,7 @@ h1 {
 
 .main-form {
     $control-height: 60px;
+    position: relative;
 
     &.tight {
         padding: 0 25px;
@@ -399,3 +400,15 @@ footer {
     }
 }
 
+#note-add {
+    width: 40px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    position: absolute;
+    padding: 3px;
+    top: -8px;
+    right: (20px + 2px - 40px) / 2;
+}
