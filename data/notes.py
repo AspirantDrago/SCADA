@@ -20,5 +20,7 @@ class Note(SqlAlchemyBase):
         return self.created_date.strftime("%d.%m.%Y %H:%M")
 
     def data_format(self, rows=None, max_length=None):
-        return self.data
-
+        data = self.data.splitlines()
+        if rows:
+            data = data[:rows]
+        return '\r\n'.join(data)

@@ -206,16 +206,47 @@ footer {
   top: -0.25em;
 }
 
+.note-all {
+  height: calc(100% - 45px);
+}
+
+.note-one {
+  height: calc(100% - (45px + 60px));
+}
+
 .note-block {
   background: #FFFFFF;
   border: 2px solid #000000;
   box-sizing: border-box;
   border-radius: 15px;
+  position: relative;
 }
-.note-block.note-all {
-  height: calc(100% - 45px);
+.note-block .note-one-datetime {
+  position: absolute;
+  top: 0;
+  padding: 7px;
+  width: 100%;
+  text-align: right;
+  font-size: 13px;
+  line-height: 15px;
+  background-color: #ffffff;
+  border-radius: 15px 15px 0 0;
 }
-.note-block > div {
+.note-block > textarea {
+  width: calc(100% + 26px);
+  background: none;
+  padding: 10px 36px 10px 10px;
+  resize: none;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  border: none;
+}
+.note-block > textarea.current {
+  padding: 28px 36px 10px 10px;
+}
+.note-block > textarea:focus {
+  outline: none !important;
+}
+.note-block > div, .note-block > textarea {
   margin-right: -26px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -223,39 +254,39 @@ footer {
   height: 100%;
   scrollbar-color: #E5E5E5 #ffffff;
 }
-.note-block > div::-webkit-scrollbar {
+.note-block > div::-webkit-scrollbar, .note-block > textarea::-webkit-scrollbar {
   width: 20px;
 }
-.note-block > div::-webkit-scrollbar-button {
+.note-block > div::-webkit-scrollbar-button, .note-block > textarea::-webkit-scrollbar-button {
   display: none;
 }
-.note-block > div::-webkit-scrollbar-track-piece {
+.note-block > div::-webkit-scrollbar-track-piece, .note-block > textarea::-webkit-scrollbar-track-piece {
   background: #FFFFFF;
   border: 2px solid #000000;
   box-sizing: border-box;
   border-radius: 15px;
 }
-.note-block > div::-webkit-scrollbar-thumb {
+.note-block > div::-webkit-scrollbar-thumb, .note-block > textarea::-webkit-scrollbar-thumb {
   background: #E5E5E5;
   border: 2px solid #000000;
   box-sizing: border-box;
   border-radius: 15px;
   margin: 3px 5px;
 }
-.note-block > div .note-item {
+.note-block > div .note-item, .note-block > textarea .note-item {
   padding-right: 7px;
 }
-.note-block > div .note-item .note-datetime {
+.note-block > div .note-item .note-datetime, .note-block > textarea .note-item .note-datetime {
   font-size: 12px;
-  line-height: 14px;
+  line-height: 15px;
   text-align: right;
 }
-.note-block > div .note-item .note-item-text {
+.note-block > div .note-item .note-item-text, .note-block > textarea .note-item .note-item-text {
   border-bottom: 1px solid #000000;
   padding: 15px 10px 0 32px;
   position: relative;
 }
-.note-block > div .note-item .note-item-text a pre {
+.note-block > div .note-item .note-item-text a pre, .note-block > textarea .note-item .note-item-text a pre {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -263,14 +294,14 @@ footer {
   color: #000000;
   margin-bottom: 0;
 }
-.note-block > div .note-item .note-item-text .remove_button {
+.note-block > div .note-item .note-item-text .remove_button, .note-block > textarea .note-item .note-item-text .remove_button {
   position: absolute;
   bottom: 50%;
   left: 4px;
   width: 24px;
   height: 24px;
 }
-.note-block > div .note-item .note-item-text .remove_button a {
+.note-block > div .note-item .note-item-text .remove_button a, .note-block > div .note-item .note-item-text .remove_button p, .note-block > textarea .note-item .note-item-text .remove_button a, .note-block > textarea .note-item .note-item-text .remove_button p {
   position: relative;
   top: 50%;
   display: block;

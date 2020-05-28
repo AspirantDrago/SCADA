@@ -12,18 +12,18 @@
         <div class="note-block note-all">
             <div>
                 {% for note in records %}
-                    <div class="note-item">
+                    <div class="note-item" id="note-id-{{ note.id }}">
                         <div class="note-item-text">
                             <a href="/notes/{{ note.id }}">
-                                <pre>{{ note.data[:300] }}</pre>
+                                <pre>{{ note.data_format(rows=3) }}</pre>
                             </a>
                             <div class="note-datetime">
                                 {{ note.created_date_format }}
                             </div>
                             <div class="remove_button">
-                                <a href="/notes/remove/{{ note.id }}">
+                                <p onclick="removeNote({{ note.id }});">
                                     <img src="/static/svg/remove.svg" alt="">
-                                </a>
+                                </p>
                             </div>
                         </div>
                     </div>

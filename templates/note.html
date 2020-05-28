@@ -1,0 +1,26 @@
+{% set page='note' %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main-form tight h-100">
+        <h1>
+            <span>
+                ЗАМЕТКИ
+            </span>
+        </h1>
+        <form action="#" method="post" class="note-all">
+            <div class="note-block note-one">
+                <textarea id="note-area" name="text"
+                          {% if current_record %}class="current"{% endif %}
+                >{{ text }}</textarea>
+                {% if current_record %}
+                    <p class="note-one-datetime">{{ date }}</p>
+                {% endif %}
+            </div>
+            <div class="group">
+                <input class="submit control" type="submit" value="Сохранить">
+            </div>
+        </form>
+    </div>
+{% endblock %}

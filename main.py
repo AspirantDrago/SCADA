@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template, session as flask_session
+from flask import Flask, redirect, request, render_template, session as flask_session, jsonify
 from flask_login import login_required, current_user, LoginManager, logout_user, login_user
 import os
 import logging
@@ -178,6 +178,38 @@ def notes():
     records = session.query(Note).filter(Note.user == current_user).\
         offset(NOTES_PAGE_SIZE * (page - 1)).limit(NOTES_PAGE_SIZE).all()
     return render_template('notes.html', records=records)
+
+
+@app.route('/notes/<int:id>', methods=['GET', 'POST'])
+@login_required
+def get_note(id):
+    record = session.query(Note).get(id)
+    if not record:
+        redirect('/')
+    if record.user != current_user:
+        redirect('/')
+    if request.method == 'POST':
+        record.data = request.form.get('text', '')
+        session.commit()
+        return redirect('/notes')
+    return render_template('note.html',
+                       text=record.data,
+                       date=record.created_date_format,
+                       current_record=True
+                       )
+
+
+@app.route('/notes/remove/<int:id>', methods=['GET'])
+@login_required
+def notes_remove(id):
+    record = session.query(Note).get(id)
+    if not record:
+        return jsonify({'error': 'Note not found'})
+    if record.user != current_user:
+        return jsonify({'error': 'No access'})
+    session.delete(record)
+    session.commit()
+    return jsonify({'success': 'ok'})
 
 
 @app.route('/logout')

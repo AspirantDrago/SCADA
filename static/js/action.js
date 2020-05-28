@@ -22,3 +22,13 @@ $('body').on('click', '.control-eye', function(){
 function updateProfile() {
     $('#profile-submit').click();
 }
+
+function removeNote(id) {
+    $.getJSON("/notes/remove/" + id, function(data){
+        if (data.success == 'ok') {
+            $('#note-id-' + id).remove();
+        } else {
+            console.log(data.error)
+        }
+    });
+}
