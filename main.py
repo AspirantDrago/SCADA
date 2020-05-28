@@ -179,7 +179,8 @@ def notes():
         .filter(Note.user == current_user)\
         .order_by(Note.created_date.desc())\
         .offset(NOTES_PAGE_SIZE * (page - 1))\
-        .limit(NOTES_PAGE_SIZE)
+        .limit(NOTES_PAGE_SIZE)\
+        .all()
     return render_template('notes.html', records=records)
 
 
@@ -241,7 +242,8 @@ def headquarters():
         .filter(Note.user == current_user) \
         .order_by(Note.created_date.desc()) \
         .offset(NOTES_HEAD_PAGE_SIZE * (page - 1)) \
-        .limit(NOTES_HEAD_PAGE_SIZE)
+        .limit(NOTES_HEAD_PAGE_SIZE) \
+        .all()
     return render_template('headquarters.html',
                            records=records
     )
