@@ -175,8 +175,11 @@ def stand():
 @login_required
 def notes():
     page = 1
-    records = session.query(Note).filter(Note.user == current_user).\
-        offset(NOTES_PAGE_SIZE * (page - 1)).limit(NOTES_PAGE_SIZE).all()
+    records = session.query(Note)\
+        .filter(Note.user == current_user)\
+        .order_by(Note.created_date.desc())\
+        .offset(NOTES_PAGE_SIZE * (page - 1))\
+        .limit(NOTES_PAGE_SIZE)
     return render_template('notes.html', records=records)
 
 
@@ -196,6 +199,24 @@ def get_note(id):
                        text=record.data,
                        date=record.created_date_format,
                        current_record=True
+                       )
+
+
+@app.route('/notes/new', methods=['GET', 'POST'])
+@login_required
+def create_note():
+    if request.method == 'POST':
+        text = request.form.get('text', '')
+        if text:
+            record = Note(
+                user=current_user,
+                data=text
+            )
+            session.add(record)
+            session.commit()
+        return redirect('/notes')
+    return render_template('note.html',
+                       current_record=False
                        )
 
 

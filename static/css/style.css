@@ -211,7 +211,7 @@ footer {
 }
 
 .note-one {
-  height: calc(100% - (45px + 60px));
+  height: 100%;
 }
 
 .note-block {
@@ -293,6 +293,7 @@ footer {
   line-height: 16px;
   color: #000000;
   margin-bottom: 0;
+  overflow: hidden;
 }
 .note-block > div .note-item .note-item-text .remove_button, .note-block > textarea .note-item .note-item-text .remove_button {
   position: absolute;
