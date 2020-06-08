@@ -3,3 +3,4 @@ Flask-Login
 SQLAlchemy
 alembic
 flask-wtf
+Flask-Admin

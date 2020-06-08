@@ -3,6 +3,7 @@ from data.users import User
 from data.temperature import Temperature
 from data.pressure import Pressure
 from data.consumption import Consumption
+from data.roles import Roles
 
 
 db_session.global_init("db/database.sqlite")
@@ -25,7 +26,8 @@ def create_root():
     root_user = session.query(User).filter(User.login == 'root').first()
     if not root_user:
         root_user = User(
-            login='root'
+            login='root',
+            role_id=1
         )
         root_user.set_password('root')
         session.add(root_user)
@@ -106,8 +108,25 @@ def create_values():
     })
 
 
+def create_roles():
+    add_default_record(Roles, {
+        'title': 'Суперадминистратор',
+        'index': 1000
+    })
+    add_default_record(Roles, {
+        'title': 'Администратор',
+        'index': 500
+    })
+    add_default_record(Roles, {
+        'title': 'Пользователь',
+        'index': 0
+    })
+
+
+create_roles()
 create_root()
 create_values()
+
 
 TEMPERATURES = session.query(Temperature).all()
 PRESSURES = session.query(Pressure).all()

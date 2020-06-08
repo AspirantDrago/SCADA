@@ -3,3 +3,4 @@ from . import temperature
 from . import pressure
 from . import consumption
 from . import notes
+from . import roles

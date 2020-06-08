@@ -11,6 +11,9 @@ class User(SqlAlchemyBase, UserMixin):
     login = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=False)
     hashed_password = sqlalchemy.Column(sqlalchemy.String)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+    role_id = sqlalchemy.Column(sqlalchemy.Integer,
+                                sqlalchemy.ForeignKey("roles.id"), nullable=False, default=3)
+    role = orm.relation('Roles', backref='users')
     temperature_id = sqlalchemy.Column(sqlalchemy.Integer,
                                        sqlalchemy.ForeignKey("temperature.id"), default=1)
     temperature = orm.relation('Temperature', backref='users')
@@ -20,6 +23,7 @@ class User(SqlAlchemyBase, UserMixin):
     consumption_id = sqlalchemy.Column(sqlalchemy.Integer,
                                        sqlalchemy.ForeignKey("consumption.id"), default=1)
     consumption = orm.relation('Consumption', backref='users')
+    reduced_consumption = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=True)
 
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)
