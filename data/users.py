@@ -15,13 +15,13 @@ class User(SqlAlchemyBase, UserMixin):
                                 sqlalchemy.ForeignKey("roles.id"), nullable=False, default=3)
     role = orm.relation('Roles', backref='users')
     temperature_id = sqlalchemy.Column(sqlalchemy.Integer,
-                                       sqlalchemy.ForeignKey("temperature.id"), default=1)
+                                       sqlalchemy.ForeignKey("temperature.id"), nullable=False, default=1)
     temperature = orm.relation('Temperature', backref='users')
     pressure_id = sqlalchemy.Column(sqlalchemy.Integer,
-                                       sqlalchemy.ForeignKey("pressure.id"), default=1)
+                                       sqlalchemy.ForeignKey("pressure.id"), nullable=False, default=1)
     pressure = orm.relation('Pressure', backref='users')
     consumption_id = sqlalchemy.Column(sqlalchemy.Integer,
-                                       sqlalchemy.ForeignKey("consumption.id"), default=1)
+                                       sqlalchemy.ForeignKey("consumption.id"), nullable=False, default=1)
     consumption = orm.relation('Consumption', backref='users')
     reduced_consumption = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=True)
 
@@ -30,6 +30,9 @@ class User(SqlAlchemyBase, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.hashed_password, password)
+
+    def __str__(self):
+        return self.login
 
     def __repr__(self):
         return f'<User {self.id} "{self.login}">'

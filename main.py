@@ -2,6 +2,8 @@ from flask import Flask, redirect, request, render_template, session as flask_se
 from flask_login import login_required, current_user, LoginManager, logout_user, login_user
 import os
 import logging
+from flask_admin import Admin
+from flask_babelex import Babel
 
 from config import *
 from data.users import User
@@ -11,6 +13,7 @@ from forms.register_form import RegisterForm
 from forms.edit_password_form import EditPasswordForm
 from forms.edit_login_form import EditLoginForm
 from functions import *
+from admin_view import *
 
 
 app = Flask(__name__)
@@ -19,6 +22,24 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 logging.basicConfig(level=logging.INFO)
+# set optional bootswatch theme
+app.config['FLASK_ADMIN_SWATCH'] = FLASK_ADMIN_SWATCH
+admin = Admin(app, template_mode='bootstrap3', name='Административная панель')
+admin.add_view(UserAdminModelView(User, session, name='Пользователи'))
+admin.add_view(RoleAdminModelView(Roles, session, name='Роли'))
+admin.add_view(ValuesAdminModelView(Consumption, session, name='расход',
+                                    category='Единицы измерения'))
+admin.add_view(ValuesAdminModelView(Temperature, session, name='температура',
+                                    category='Единицы измерения'))
+admin.add_view(ValuesAdminModelView(Pressure, session, name='давление',
+                                    category='Единицы измерения'))
+admin.add_view(NotesAdminModelView(Note, session, name='Заметки'))
+babel = Babel(app)
+
+
+@babel.localeselector
+def get_locale():
+        return 'ru'
 
 
 @login_manager.user_loader
