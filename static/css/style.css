@@ -172,6 +172,25 @@ header .navbar .navbar-toggler .navbar-menu {
   box-sizing: border-box;
   border-radius: 15px;
 }
+#ModalMenu .modal-dialog .modal-content .modal-body::-webkit-scrollbar {
+  width: 20px;
+}
+#ModalMenu .modal-dialog .modal-content .modal-body::-webkit-scrollbar-button {
+  display: none;
+}
+#ModalMenu .modal-dialog .modal-content .modal-body::-webkit-scrollbar-track-piece {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+#ModalMenu .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb {
+  background: #E5E5E5;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin: 3px 5px;
+}
 #ModalMenu .modal-dialog .modal-content h1 {
   font-weight: 500;
   margin: 17px 0 0 0;

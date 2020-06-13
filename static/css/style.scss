@@ -209,6 +209,10 @@ header {
             box-sizing: border-box;
             border-radius: 15px;
 
+            .modal-body {
+                @include custom-scroll();
+            }
+
             h1 {
                 @extend %center-control;
                 font-weight: 500;
