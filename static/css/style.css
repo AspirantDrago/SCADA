@@ -392,7 +392,7 @@ footer {
   box-sizing: border-box;
   border-radius: 15px;
   overflow: hidden;
-  height: calc(100% - 116px);
+  height: calc(100% - 120px);
 }
 
 #chart_btn_group {
