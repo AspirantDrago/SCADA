@@ -461,7 +461,7 @@
                         // prevent minutes from showing in 5 minute increments
                         minuteStep: 1,
                         maxYear: 2030,
-                    }
+                    }                    
                 });
                 return true;
             case 'x-editable-combodate':

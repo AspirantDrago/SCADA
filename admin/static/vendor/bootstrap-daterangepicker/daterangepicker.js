@@ -73,7 +73,7 @@
         //allow setting options with data attributes
         //data-api options will be overwritten with custom javascript options
         options = $.extend(this.element.data(), options);
-
+        
         this.setOptions(options, cb);
 
         //event listeners
@@ -548,7 +548,7 @@
 
             this.updateCalendars();
         },
-
+        
         keydown: function (e) {
             //hide on tab or enter
         	if ((e.keyCode === 9) || (e.keyCode === 13)) {
@@ -573,7 +573,7 @@
                 };
                 parentRightEdge = this.parentEl[0].clientWidth + this.parentEl.offset().left;
             }
-
+            
             if (this.drops == 'up')
             	containerTop = this.element.offset().top - this.container.outerHeight() - parentOffset.top;
             else
@@ -1161,7 +1161,7 @@
                 for (var col = 0; col < 7; col++) {
                     var cname = 'available ';
                     cname += (calendar[row][col].month() == calendar[1][1].month()) ? '' : 'off';
-
+                    
                     if(calendar[row][col].isSame(new Date(), "day") ) {
                         cname += ' today ';
                     }
