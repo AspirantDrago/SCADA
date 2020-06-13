@@ -77,6 +77,13 @@
                         </a>
                     {% endif %}
                 {% endif %}
+                {% if current_user.is_authenticated and current_user.role.index >= 1000 %}
+                    <a href="/admin">
+                        <h1>
+                            БАЗА ДАННЫХ
+                        </h1>
+                    </a>
+                {% endif %}
                 {% for url, name, page_name in [
                     ('/profile', 'Профиль', 'profile'),
                     ('/headquarters', 'Штаб', 'headquarters'),

@@ -124,6 +124,12 @@ def profile():
             session.commit()
         except BaseException as e:
             pass
+        try:
+            consumption_type = request.form.get('consumptionType', 'reduced')
+            current_user.reduced_consumption = consumption_type == 'reduced'
+            session.commit()
+        except BaseException as e:
+            pass
     ip_address = request.remote_addr
     return render_template('profile.html',
                            ip_address=ip_address,
@@ -288,4 +294,4 @@ def get_stand_url():
 
 if __name__ == '__main__':
     port_run = int(os.environ.get("PORT", PORT))
-    app.run(host=HOST, port=port_run, debug=DEBAG)
+    app.run(host=HOST, port=port_run, debug=DEBUG)

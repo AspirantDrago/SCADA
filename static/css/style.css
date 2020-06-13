@@ -10,6 +10,7 @@ body {
 .container {
   padding: 0 18px;
   height: calc(100% - 90px - 90px);
+  overflow-y: auto;
 }
 
 .profile-grid select, .profile-grid, .main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {

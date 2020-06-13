@@ -10,7 +10,7 @@ db_session.global_init("db/database.sqlite")
 session = db_session.create_session()
 HOST = '0.0.0.0'
 PORT = 80
-DEBAG = True
+DEBUG = True
 SECRET_KEY = 'scada_system'
 REMEMBER_USER = False
 COUNT_SAVED_LOGINS = 4

@@ -33,6 +33,11 @@
                 {{ current_user.created_date_format }}
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                Роль: {{ current_user.role.title }}
+            </div>
+        </div>
         <div class="row" style="margin-top: 24px;">
             <div class="col-12">
                 Единицы измерения:
@@ -86,6 +91,29 @@
                         {% endif %}
                     {% endfor %}
                 </select>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-12">
+                Отображать расход:
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input type="radio" id="consumptionChoice1" name="consumptionType" value="reduced"
+                {% if current_user.reduced_consumption %} checked {% endif %}
+                onchange="updateProfile();">
+                <label for="consumptionChoice1">
+                    Приведённый
+                </label>
+                <br>
+                <input type="radio" id="consumptionChoice2" name="consumptionType" value="fact"
+                {% if not current_user.reduced_consumption %} checked {% endif %}
+                onchange="updateProfile();">
+                <label for="consumptionChoice2">
+                    Фактический
+                </label>
             </div>
         </div>
 

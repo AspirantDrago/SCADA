@@ -13,6 +13,7 @@ body {
 .container {
     padding: 0 18px;
     height: calc(100% - 90px - 90px);
+    overflow-y: auto;
 }
 
 %basic-control {
