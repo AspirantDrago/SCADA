@@ -23,7 +23,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 logging.basicConfig(level=logging.INFO)
 # set optional bootswatch theme
-# app.config['FLASK_ADMIN_SWATCH'] = FLASK_ADMIN_SWATCH
+app.config['FLASK_ADMIN_SWATCH'] = FLASK_ADMIN_SWATCH
 admin = Admin(app, template_mode='bootstrap3', name='Административная панель')
 admin.add_view(UserAdminModelView(User, session, name='Пользователи'))
 admin.add_view(RoleAdminModelView(Roles, session, name='Роли'))
