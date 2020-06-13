@@ -7,10 +7,28 @@ body {
   color: #000000;
 }
 
-.container {
-  padding: 0 18px;
-  height: calc(100% - 90px - 90px);
+#container {
   overflow-y: auto;
+  height: calc(100% - 90px - 90px);
+}
+#container::-webkit-scrollbar {
+  width: 20px;
+}
+#container::-webkit-scrollbar-button {
+  display: none;
+}
+#container::-webkit-scrollbar-track-piece {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+#container::-webkit-scrollbar-thumb {
+  background: #E5E5E5;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin: 3px 5px;
 }
 
 .profile-grid select, .profile-grid, .main-italic, #ModalMenu .modal-dialog .modal-content h1, header h1, .main-form .control, h1 {
@@ -260,10 +278,6 @@ footer {
   scrollbar-color: #E5E5E5 #ffffff;
   border-radius: 15px;
 }
-.note-block > div.minify, .note-block > textarea.minify {
-  overflow: hidden;
-  margin-right: 0;
-}
 .note-block > div::-webkit-scrollbar, .note-block > textarea::-webkit-scrollbar {
   width: 20px;
 }
@@ -282,6 +296,10 @@ footer {
   box-sizing: border-box;
   border-radius: 15px;
   margin: 3px 5px;
+}
+.note-block > div.minify, .note-block > textarea.minify {
+  overflow: hidden;
+  margin-right: 0;
 }
 .note-block > div .note-none, .note-block > textarea .note-none {
   text-align: center;
