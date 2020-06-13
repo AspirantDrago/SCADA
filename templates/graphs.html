@@ -3,12 +3,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="main-form">
+    <div class="main-form h-100">
         <h1>
             <span>
                 ГРАФИКИ
             </span>
         </h1>
         <div id="chart_div"></div>
+
+        <div class="row" id="chart_btn_group">
+            <div class="col-3">
+                <div class="submit control {% if mode == 'temperature' %}selected{% endif %}">
+                    <a href="/graphs/temperature">
+                        t
+                        <br>
+                        <span class="desc">
+                            {{ current_user.temperature.desc }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="submit control {% if mode == 'pressure' %}selected{% endif %}">
+                    <a href="/graphs/pressure">
+                        p
+                        <br>
+                        <span class="desc">
+                            {{ current_user.pressure.desc }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="submit control {% if mode == 'consumption_fact' %}selected{% endif %}">
+                    <a href="/graphs/consumption_fact">
+                        F<sub>факт</sub>
+                        <br>
+                        <span class="desc">
+                            {{ current_user.consumption.desc }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="submit control {% if mode == 'temperature_reduce' %}selected{% endif %}">
+                    <a href="/graphs/temperature_reduce">
+                        F<sub>прив</sub>
+                        <br>
+                        <span class="desc">
+                            {{ current_user.consumption.desc }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        var time_interval = {{ time_interval }};
+        var color_chart = '{{ val.color }}';
+        var title_chart = '{{ val.item }} - {{ val.title }}, {{ val.desc }}';
+    </script>
+    <script src="/static/js/charts-api.min.js"></script>
 {% endblock %}

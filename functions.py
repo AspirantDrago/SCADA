@@ -23,3 +23,7 @@ def deconv_p(value):
 
 def deconv_f(value):
     return flask_login.current_user.consumption.deconvert(value)
+
+
+def chart_time_interval():
+    return 500

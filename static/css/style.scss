@@ -443,3 +443,38 @@ footer {
     top: -8px;
     right: (20px + 2px - 40px) / 2;
 }
+
+#chart_div {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    overflow: hidden;
+    height: calc(100% - 116px);
+}
+
+#chart_btn_group {
+    margin: 20px -3px 0 -3px;
+
+    div {
+        padding-left: 3px;
+        padding-right: 3px;
+        overflow: hidden;
+
+        div {
+            &.selected {
+                background: #959595;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000000;
+
+                span.desc {
+                    font-size: 0.6em;
+                    color: #333333;
+                }
+            }
+        }
+    }
+}

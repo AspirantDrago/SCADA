@@ -276,9 +276,43 @@ def headquarters():
 
 
 @app.route('/graphs', methods=['GET'])
+@app.route('/graphs/<mode>', methods=['GET'])
 @login_required
-def graphs():
-    return render_template('graphs.html')
+def graphs(mode='temperature'):
+    time_interval = chart_time_interval()
+    vals = {
+        'temperature': {
+            'color': 'red',
+            'item': 't',
+            'title': 'Температура',
+            'desc': current_user.temperature.desc,
+        },
+        'pressure': {
+            'color': 'blue',
+            'item': 'p',
+            'title': 'Давление',
+            'desc': current_user.pressure.desc,
+        },
+        'consumption_fact': {
+            'color': 'green',
+            'item': 'F',
+            'title': 'Расход фактический',
+            'desc': current_user.consumption.desc,
+        },
+        'temperature_reduce': {
+            'color': 'green',
+            'item': 'F',
+            'title': 'Расход приведённый',
+            'desc': current_user.consumption.desc,
+        },
+    }
+
+
+    return render_template('graphs.html',
+                           time_interval=time_interval,
+                           mode=mode,
+                           val=vals[mode]
+    )
 
 
 @app.route('/logout')
