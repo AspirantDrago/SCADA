@@ -1,9 +1,8 @@
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+var h_title = 'Время';
 
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
-    ['Year', 'Sales'],
+    [h_title, v_title],
     ['2013',  1000],
     ['2014',  1170],
     ['2015',  660],
@@ -19,7 +18,7 @@ var options = {
         fontSize: 20
     },
     hAxis: {
-        title: 'Время',
+        title: h_title,
         titleTextStyle: {
             color: '#000',
             fontSize: 20
@@ -45,3 +44,6 @@ var options = {
 var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
     chart.draw(data, options);
 }
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
