@@ -2,6 +2,7 @@ from flask import Flask, redirect, request, render_template, session as flask_se
 from flask_login import login_required, current_user, LoginManager, logout_user, login_user
 import os
 import logging
+from waitress import serve
 from flask_admin import Admin
 from flask_babelex import Babel
 
@@ -328,4 +329,7 @@ def get_stand_url():
 
 if __name__ == '__main__':
     port_run = int(os.environ.get("PORT", PORT))
-    app.run(host=HOST, port=port_run, debug=DEBUG)
+    if DEBUG:
+        app.run(host=HOST, port=port_run, debug=DEBUG)
+    else:
+        serve(app, host=HOST, port=port_run)
